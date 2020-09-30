@@ -1,5 +1,6 @@
 # project specific
-data/
+pdf_data/
+txt_data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
