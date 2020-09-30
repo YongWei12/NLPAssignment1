@@ -3,11 +3,11 @@ import pandas as pd
 import datetime as dt
 from slugify import slugify
 
-reddit = praw.Reddit(client_id='L-EzVaeNQPy38A', 
-                     client_secret='BVhTb7gz8ehbeEJgee0BwR_EQA8', 
+reddit = praw.Reddit(client_id='', 
+                     client_secret='', 
                      user_agent='r-python-scrapper-1', 
                      username='r-python-scrapper', 
-                     password='5mP:x%8nP!<m`rf]')
+                     password='')
 
 
 subreddit = reddit.subreddit('python')
