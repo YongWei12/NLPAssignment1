@@ -1,25 +1,27 @@
 '''
 Script for extracting text from pdf,
 then storing extracted text into txt files of the same name.
+Note that txt files still need to be cleaned manually.
 '''
 from pdfminer.high_level import extract_text
 import os
 
 
-os.chdir(os.path.dirname(__file__))  # make sure we are in the right directory
+# make sure we are in the right directory
+os.chdir(os.path.dirname(os.path.dirname(__file__)))
 print(f'current dir: {os.getcwd()}')
 
 # source directory structure:
-# raw_data/
+# data_pdf/
 # ----psychology/
 # ----sigbovik/
-source_dir_path = os.path.join(os.getcwd(), 'pdf_data/')
+source_dir_path = os.path.join(os.getcwd(), 'data_pdf/')
 
 # destination directory structure:
-# data/
+# data_txt/
 # ----psychology/
 # ----sigbovik/
-dest_dir_path = os.path.join(os.getcwd(), 'txt_data/')
+dest_dir_path = os.path.join(os.getcwd(), 'data_txt/')
 
 for subdir in os.listdir(source_dir_path):
     source_subdir_path = os.path.join(source_dir_path, subdir)
