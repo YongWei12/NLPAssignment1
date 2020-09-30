@@ -179,7 +179,6 @@ will dance together but also is able to itself dance an enchanting foxtrot. Whil
 achieve similar results, our method’s runtime vastly outperforms DCNN’s, which takes 10 lifetimes
 to run.
 
-6
 
 Conclusion and Future Work
 
