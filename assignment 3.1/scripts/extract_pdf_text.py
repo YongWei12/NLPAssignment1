@@ -11,15 +11,8 @@ import os
 os.chdir(os.path.dirname(os.path.dirname(__file__)))
 print(f'current dir: {os.getcwd()}')
 
-# source directory structure:
-# data_pdf/
-# ----sigbovik/
-source_dir_path = os.path.join(os.getcwd(), 'data_pdf/sigbovik/')
-
-# destination directory structure:
-# data_txt/
-# ----sigbovik/
-dest_dir_path = os.path.join(os.getcwd(), 'data_txt/sigbovik/')
+source_dir_path = os.path.join(os.getcwd(), 'data_sigbovik_pdf/')
+dest_dir_path = os.path.join(os.getcwd(), 'data_sigbovik_txt/')
 
 # make sure directory exists before writing to it
 os.makedirs(dest_dir_path, exist_ok=True)
