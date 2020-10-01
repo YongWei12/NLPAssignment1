@@ -1,15 +1,13 @@
 from nltk.tokenize import sent_tokenize, word_tokenize
-import cv2
 import os
 
-# example_text = "Hi here, I am a boy.  Mr. Smith says you are a loser \n asdsasdsasda"
-
+# function to convert the tokenizer output style
 def convert(lst):   
     return '|'.join(lst) 
 
-# iterating through the whole dataset
+# declare the directory
 directory = "./data/sigbovik/"
-output = "./output/sigbovik"
+output = "./output/sigbovik/Tokenizer"
 
 # function to read files in directory and tokenize it
 def tokenizeFile (input, output=0):
@@ -25,7 +23,7 @@ def tokenizeFile (input, output=0):
             continue
 
 
-
+#calling the tokenizer function
 tokenizeFile(directory,output )
 
 
