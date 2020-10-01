@@ -13,35 +13,29 @@ print(f'current dir: {os.getcwd()}')
 
 # source directory structure:
 # data_pdf/
-# ----psychology/
 # ----sigbovik/
-source_dir_path = os.path.join(os.getcwd(), 'data_pdf/')
+source_dir_path = os.path.join(os.getcwd(), 'data_pdf/sigbovik/')
 
 # destination directory structure:
 # data_txt/
-# ----psychology/
 # ----sigbovik/
-dest_dir_path = os.path.join(os.getcwd(), 'data_txt/')
+dest_dir_path = os.path.join(os.getcwd(), 'data_txt/sigbovik/')
 
-for subdir in os.listdir(source_dir_path):
-    source_subdir_path = os.path.join(source_dir_path, subdir)
-    dest_subdir_path = os.path.join(dest_dir_path, subdir)
+# make sure directory exists before writing to it
+os.makedirs(dest_dir_path, exist_ok=True)
 
-    # make sure directory exists before wirting to it
-    os.makedirs(dest_subdir_path, exist_ok=True)
+for pdf in os.listdir(source_dir_path):
+    if not pdf.endswith('.pdf'):  # make sure we are actually dealing with pdfs
+        continue
 
-    for pdf in os.listdir(source_subdir_path):
-        if not pdf.endswith('.pdf'):  # make sure we are actually dealing with pdfs
-            continue
+    print(f'working on {pdf}')
 
-        print(f'working on {pdf}')
+    pdf_path = os.path.join(source_dir_path, pdf)
+    txt_path = os.path.join(dest_dir_path, pdf.replace('.pdf', '.txt'))
 
-        pdf_path = os.path.join(source_subdir_path, pdf)
-        txt_path = os.path.join(dest_subdir_path, pdf.replace('.pdf', '.txt'))
+    text = extract_text(pdf_path)
 
-        text = extract_text(pdf_path)
-
-        with open(txt_path, mode='w') as txt_file:
-            txt_file.write(text)
+    with open(txt_path, mode='w') as txt_file:
+        txt_file.write(text)
 
 print('done')
