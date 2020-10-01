@@ -10,13 +10,23 @@ def convert(lst):
 directory = "./data/sigbovik/"
 outputTokenizer = "./output/sigbovik/Tokenizer"
 outputStemming= "./output/sigbovik/Stemming"
+#dota file directory
+dotaInput = "./data/dota2/"
+outputDotaToken="./output/dota2/Tokenizer"
+outputDotaStemmer = "./output/dota2/Stemming"
+#r-python directory
+r_PythonInput = "./data/r-python/"
+output_r_Python_Token="./output/r-python/Tokenizer"
+output_r_Python_Stemmer = "./output/r-python/Stemming"
+
+
 
 # function to read files in directory and tokenize it
 def tokenizeFile (input, output=0,combine=False ):
     tokenize_list_combined = []
     for filename in os.listdir(input):
         if filename.endswith(".txt"):
-            f = open(os.path.join(directory, filename), "r",  encoding="utf8") 
+            f = open(os.path.join(input, filename), "r",  encoding="utf8") 
             text = f.read()
             if combine == False:
                 file_out =open(os.path.join(output, filename), "w", encoding="utf8")
@@ -36,7 +46,7 @@ def StemFile(input, output=0,combine=False ):
         stem_list_combined=[]
         for filename in os.listdir(input):
             if filename.endswith(".txt"):
-                f = open(os.path.join(directory, filename), "r",  encoding="utf8") 
+                f = open(os.path.join(input, filename), "r",  encoding="utf8") 
                 tokenizeList = list(dict.fromkeys(word_tokenize(f.read())))
                 stemList = []
                 if combine == False:
@@ -57,7 +67,13 @@ def StemFile(input, output=0,combine=False ):
 
 
 #calling the tokenizer function
-tokenizeFile(directory,outputTokenizer,True )
-StemFile(directory,outputStemming ,True)
+# tokenizeFile(directory,outputTokenizer,True )
+# StemFile(directory,outputStemming ,True)
 
+
+tokenizeFile(dotaInput,outputDotaToken,True )
+StemFile(dotaInput,outputDotaStemmer,True)
+
+tokenizeFile(r_PythonInput,output_r_Python_Token,True )
+StemFile(r_PythonInput,output_r_Python_Stemmer,True)
 
