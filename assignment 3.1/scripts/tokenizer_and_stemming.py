@@ -1,4 +1,5 @@
 from nltk.tokenize import sent_tokenize, word_tokenize
+from nltk.stem import PorterStemmer
 import os
 
 # function to convert the tokenizer output style
@@ -12,7 +13,7 @@ outputStemming= "./output/sigbovik/Stemming"
 
 # function to read files in directory and tokenize it
 def tokenizeFile (input, output=0,combine=False ):
-    for filename in os.listdir(directory):
+    for filename in os.listdir(input):
         if filename.endswith(".txt"):
             f = open(os.path.join(directory, filename), "r",  encoding="utf8") 
             text = f.read()
@@ -29,24 +30,32 @@ def tokenizeFile (input, output=0,combine=False ):
             continue
 
 #Function to stem the files 
+ps = PorterStemmer()
+def StemFile(input, output=0,combine=False ):
+        for filename in os.listdir(input):
+            if filename.endswith(".txt"):
+                f = open(os.path.join(directory, filename), "r",  encoding="utf8") 
+                tokenizeList = list(dict.fromkeys(word_tokenize(f.read())))
+                stemList = []
+                if combine == False:
+                    file_out =open(os.path.join(output, filename), "w", encoding="utf8")
+                    for word in tokenizeList:
+                        stemList.append(ps.stem(word))
+                        stemList = list(dict.fromkeys(stemList))
+                    file_out.write(convert(stemList)+"\n")
+                else:                    
+                    for word in tokenizeList:
+                        stemList.append(ps.stem(word))
+        if( combine ==True ):
+            file_out =open(os.path.join(output, "combined_files.txt"), "a+", encoding="utf8")
+            stemList = list(dict.fromkeys(stemList))
+            file_out.write(convert(stemList)+"\n") 
+
 
 
 
 #calling the tokenizer function
 tokenizeFile(directory,outputTokenizer,True )
+StemFile(directory,outputStemming ,True)
 
 
-
-# try out code
-# print(os.listdir())
-# my_file = "./scripts/demo.txt"
-# f = open(my_file, "r",  encoding="utf8")
-# Lines = f.readlines()
-# print(f.read())
-# file_out =open(os.path.join(output, "demo.txt"), "w", encoding="utf8")
-# for line in Lines:
-#     file_out.write(convert(word_tokenize(line))+"\n")
-
-
-# for i in word_tokenize(example_text):
-#     print(i)
