@@ -13,6 +13,7 @@ outputStemming= "./output/sigbovik/Stemming"
 
 # function to read files in directory and tokenize it
 def tokenizeFile (input, output=0,combine=False ):
+    tokenize_list_combined = []
     for filename in os.listdir(input):
         if filename.endswith(".txt"):
             f = open(os.path.join(directory, filename), "r",  encoding="utf8") 
@@ -22,16 +23,17 @@ def tokenizeFile (input, output=0,combine=False ):
                 tokenize_list =list(dict.fromkeys(word_tokenize(text)))
                 file_out.write(convert(tokenize_list)+"\n")
             else:
-                file_out =open(os.path.join(output, "combined_files.txt"), "a+", encoding="utf8")
-                tokenize_list =list(dict.fromkeys(word_tokenize(text)))
-                file_out.write(convert(tokenize_list)+"\n") 
-            continue
-        else:
-            continue
+                for word in word_tokenize(text):
+                    tokenize_list_combined.append(word)
+    if combine == True:
+        file_out =open(os.path.join(output, "combined_files.txt"), "a+", encoding="utf8")
+        tokenize_list =list(dict.fromkeys(tokenize_list_combined))
+        file_out.write(convert(tokenize_list)+"\n") 
 
 #Function to stem the files 
 ps = PorterStemmer()
 def StemFile(input, output=0,combine=False ):
+        stem_list_combined=[]
         for filename in os.listdir(input):
             if filename.endswith(".txt"):
                 f = open(os.path.join(directory, filename), "r",  encoding="utf8") 
@@ -45,10 +47,10 @@ def StemFile(input, output=0,combine=False ):
                     file_out.write(convert(stemList)+"\n")
                 else:                    
                     for word in tokenizeList:
-                        stemList.append(ps.stem(word))
+                        stem_list_combined.append(ps.stem(word))
         if( combine ==True ):
             file_out =open(os.path.join(output, "combined_files.txt"), "a+", encoding="utf8")
-            stemList = list(dict.fromkeys(stemList))
+            stemList = list(dict.fromkeys(stem_list_combined))
             file_out.write(convert(stemList)+"\n") 
 
 

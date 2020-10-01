@@ -17,3 +17,18 @@ Beautiful
 This is amazing. Thank you.
 Really helpful. Obviously logical errors could be one of many different reasons but this is a great starting point for common mistakes
 I'd also highly recommend this chapter on debugging from **Think Python** book: https://greenteapress.com/thinkpython2/html/thinkpython2021.html
+
+
+# try out code
+# print(os.listdir())
+# my_file = "./scripts/demo.txt"
+# f = open(my_file, "r",  encoding="utf8")
+# Lines = f.readlines()
+# print(f.read())
+# file_out =open(os.path.join(output, "demo.txt"), "w", encoding="utf8")
+# for line in Lines:
+#     file_out.write(convert(word_tokenize(line))+"\n")
+
+
+# for i in word_tokenize(example_text):
+#     print(i)
