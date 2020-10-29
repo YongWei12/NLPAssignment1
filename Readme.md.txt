@@ -22,7 +22,7 @@ This README is best viewed using a text editor that supports Markdown.
     4. enter: `nltk.download()`
     5. download the following packages using the downloader: averaged_perceptron_tagger, punkt, tagsets, vader_lexicon
     6. close the downloader
-    7. enter: `quit()
+    7. enter: `quit()`
 4. you are done setting up - deactivate the virtual environment if you want: `conda deactivate`
 
 ---
