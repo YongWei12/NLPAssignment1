@@ -51,4 +51,8 @@ This README is best viewed using a text editor that supports Markdown.
   - `*.txt` and `*.csv`: data related to assignment 3.2
 
 - `assignment 3.3/`: folder that contains everything related to assignment 3.3  
-  - `3.3.ipynb`: notebook for the whole of assignment 3.3 
+  - `3.3.ipynb`: notebook for the whole of assignment 3.3
+
+## dependencies / libraries used
+
+listed in `nlp_venv.txt`
